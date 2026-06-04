@@ -1,8 +1,8 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
-#include <random>
 #include <iomanip>
+#include <iostream>
+#include <random>
+#include <vector>
 
 #include "collvalue.h"
 #include "sorting.h"
@@ -17,9 +17,10 @@ std::vector<CollInt> generate_data(size_t n)
     return data;
 }
 
-void shuffle_data(std::vector<CollInt>& data)
+void shuffle_data(std::vector<CollInt> &data)
 {
-    std::shuffle(data.begin(), data.end(), std::mt19937{std::random_device{}()});
+    std::shuffle(data.begin(), data.end(),
+                 std::mt19937{std::random_device{}()});
 }
 
 int main()
@@ -27,7 +28,6 @@ int main()
     std::vector<size_t> sizes = {100, 500, 1000, 2000};
 
     std::cout << "N\tAlgo\t\tComps\t\tSwaps\t\tMoves\n";
-    std::cout << "----------------------------------------------------------------\n";
 
     for (size_t n : sizes)
     {
@@ -37,21 +37,22 @@ int main()
         shuffle_data(number_data);
         CollInt::reset_stats();
         std::sort(number_data.begin(), number_data.end());
-        std::cout << n << "\tstd::sort\t" << CollInt::comps << "\t\t" << CollInt::swaps << "\t\t" << CollInt::moves << "\n";
+        std::cout << n << "\tstd::sort\t" << CollInt::comps << "\t\t"
+                  << CollInt::swaps << "\t\t" << CollInt::moves << "\n";
 
         // --- Bubble Sort ---
         shuffle_data(number_data);
         CollInt::reset_stats();
         bubble_sort(number_data.begin(), number_data.end());
-        std::cout << n << "\tBubble\t\t" << CollInt::comps << "\t\t" << CollInt::swaps << "\t\t" << CollInt::moves << "\n";
+        std::cout << n << "\tBubble\t\t" << CollInt::comps << "\t\t"
+                  << CollInt::swaps << "\t\t" << CollInt::moves << "\n";
 
         // --- Quick Sort ---
         shuffle_data(number_data);
         CollInt::reset_stats();
         quick_sort(number_data.begin(), number_data.end());
-        std::cout << n << "\tQuick\t\t" << CollInt::comps << "\t\t" << CollInt::swaps << "\t\t" << CollInt::moves << "\n";
-
-        std::cout << "--------------------------------------------------------------\n";
+        std::cout << n << "\tQuick\t\t" << CollInt::comps << "\t\t"
+                  << CollInt::swaps << "\t\t" << CollInt::moves << "\n";
     }
 
     return 0;

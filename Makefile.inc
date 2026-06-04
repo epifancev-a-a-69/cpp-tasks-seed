@@ -1,4 +1,5 @@
 CXX = g++
+CXX_EXTRA_FLAGS = -I ../external/lazycsv/include -I ../external/eigen
 CXXFLAGS = -Werror -Wpedantic -Wall $(CXX_EXTRA_FLAGS)
 CXXFLAGS_R = $(CXXFLAGS) -O3 -DNDEBUG
 CXXFLAGS_D = $(CXXFLAGS) -g  -DDEBUG

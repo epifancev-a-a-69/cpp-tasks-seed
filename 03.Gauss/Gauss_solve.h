@@ -3,6 +3,6 @@
 
 #include "util.h"
 
-GaussVector Gauss_solve(GaussMatrix& ab);
+GaussVector Gauss_solve(GaussMatrix &ab);
 
 #endif // GAUSS_SOLVE_H
